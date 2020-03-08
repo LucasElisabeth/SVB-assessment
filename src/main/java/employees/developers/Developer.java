@@ -1,4 +1,10 @@
-package employees;
+package employees.developers;
 
-public class Developer {
+import employees.Employee;
+
+public class Developer extends Employee {
+
+    public Developer(int employeeId, String team, String name) {
+        super(employeeId, team, name);
+    }
 }
