@@ -5,8 +5,8 @@ public class LeadDeveloper extends Developer {
     private int yearsOfExperience;
     private String technology;
 
-    public LeadDeveloper(int employeeId, String teamName, String team, int yearsOfExperience, String technology) {
-        super(employeeId, teamName, team);
+    public LeadDeveloper(int employeeId, String teamName, String name, int yearsOfExperience, String technology) {
+        super(employeeId, teamName, name);
         this.yearsOfExperience = yearsOfExperience;
         this.technology = technology;
     }
