@@ -10,8 +10,6 @@ public class CSVReader {
 
     private String line;
     private String selector;
-    private boolean isEmployee;
-
 
     public CSVReader(String selector) {
         this.selector = selector;
@@ -23,22 +21,18 @@ public class CSVReader {
 
     private String[] parseHeader(String header) {
 
-        return translateLine(header);
+        return parseLine(header);
     }
 
     public ArrayList<String> readFile(File file) {
 
-        isEmployee = false;
         ArrayList<String> strings = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 
-            for (String str : parseHeader(br.readLine())) {
-                if (str.contains("role")) {
-                    isEmployee = true;
-                    break;
-                }
-            }
+            // Dealing with the header line will be dealt underneath, currently not implemented.
+            String[] header = parseHeader(br.readLine());
+
 
             while ((line = br.readLine()) != null) {
 
@@ -52,13 +46,10 @@ public class CSVReader {
         return strings;
     }
 
-    public String[] translateLine(String string) {
+    public String[] parseLine(String string) {
 
         return string.split(selector);
     }
 
-    public boolean isEmployee() {
-        return isEmployee;
-    }
 }
 

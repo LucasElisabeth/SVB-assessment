@@ -1,6 +1,12 @@
 package employees;
 
-public abstract class Employee implements Contractor{
+import csv.CSVReader;
+import exceptions.InvalidEmployeeDataException;
+
+import java.io.File;
+import java.util.List;
+
+public abstract class Employee implements Contractor {
 
     private int employeeId;
     private boolean contractor;
@@ -15,6 +21,23 @@ public abstract class Employee implements Contractor{
         role = this.getClass().getSimpleName();
     }
 
+    public void setEmployeeData(CSVReader reader) throws InvalidEmployeeDataException {
+        List<String> stringList = reader.readFile(new File("src/main/resources/employee-data.csv"));
+        for (String str : stringList) {
+            String[] strings = reader.parseLine(str);
+            int id = 0;
+            if ((id = Integer.parseInt(strings[0])) != 0) {
+                if (id == employeeId) {
+                    name = strings[1];
+                    if (strings[2].equalsIgnoreCase("yes")) {
+                        contractor = true;
+                    }
+                }
+            } else {
+                throw new InvalidEmployeeDataException();
+            }
+        }
+    }
 
     public int getEmployeeId() {
         return employeeId;

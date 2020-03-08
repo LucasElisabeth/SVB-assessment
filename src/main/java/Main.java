@@ -12,6 +12,9 @@ public class Main {
         amg.populateEmployeeList(reader);
         pgb.populateEmployeeList(reader);
 
+        System.out.println(amg.getEmployeeDescription(101));
+        System.out.println(pgb.getEmployeeDescription(301));
+
 
     }
 }
