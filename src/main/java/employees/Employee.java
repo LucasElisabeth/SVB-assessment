@@ -81,12 +81,6 @@ public abstract class Employee implements Contractor {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() +
-                "{ employeeId=" + employeeId +
-                ", contractor=" + contractor +
-                ", name='" + name + '\'' +
-                ", team='" + team + '\'' +
-                ", role='" + role + '\'' +
-                '}';
+        return name + ": " + this.getClass().getSimpleName() + ", works for: " + team + ", employeeId: " + employeeId;
     }
 }

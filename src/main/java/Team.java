@@ -4,7 +4,6 @@ import employees.ProductOwner;
 import employees.Tester;
 import employees.developers.Developer;
 import employees.developers.LeadDeveloper;
-import exceptions.InvalidEmployeeDataException;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,6 +16,44 @@ public class Team {
 
     public Team(String name) {
         this.name = name;
+    }
+
+    public static String generateReport(List<Team> teams) {
+        List<String> descriptions = new ArrayList<>();
+        for (Team team : teams) {
+            descriptions.add("Product owner(s) from " + team.name + ":");
+            for (Employee employee : team.getEmployees()) {
+                if (employee instanceof ProductOwner) {
+                    descriptions.add(employee.toString());
+                }
+            }
+            descriptions.add("Lead Developer(s) from " + team.name + ":");
+            for (Employee employee : team.getEmployees()) {
+                if (employee instanceof LeadDeveloper) {
+                    descriptions.add(employee.toString());
+                }
+            }
+            descriptions.add("Tester(s) from " + team.name + ":");
+            for (Employee employee : team.getEmployees()) {
+                if (employee instanceof Tester) {
+                    descriptions.add(employee.toString());
+                }
+            }
+            descriptions.add("Developer(s) from " + team.name + ":");
+            for (Employee employee : team.getEmployees()) {
+                if (employee instanceof Developer) {
+                    descriptions.add(employee.toString());
+                }
+            }
+        }
+
+        StringBuilder reportBuilder = new StringBuilder();
+        for (String str : descriptions) {
+            reportBuilder.append(str);
+            reportBuilder.append("\n");
+        }
+
+        return reportBuilder.toString();
     }
 
     public void populateEmployeeList(CSVReader reader) {
@@ -57,7 +94,7 @@ public class Team {
         }
     }
 
-    public String  getEmployeeDescription(int employeeId) {
+    public String getEmployeeDescription(int employeeId) {
 
         if (!employees.isEmpty()) {
             for (Employee employee : employees) {
@@ -72,6 +109,13 @@ public class Team {
         return null;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public List<Employee> getEmployees() {
         return employees;
