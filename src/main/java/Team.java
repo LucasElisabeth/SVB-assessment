@@ -94,21 +94,6 @@ public class Team {
         }
     }
 
-    public String getEmployeeDescription(int employeeId) {
-
-        if (!employees.isEmpty()) {
-            for (Employee employee : employees) {
-                if (employee.getEmployeeId() == employeeId) {
-                    return employee.toString();
-                }
-            }
-        } else {
-            System.out.println("There are no employees in this team.");
-        }
-
-        return null;
-    }
-
     public String getName() {
         return name;
     }
