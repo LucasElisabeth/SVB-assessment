@@ -102,7 +102,7 @@ public class Team {
             for (Employee employee : employees) {
                 employee.setEmployeeData(reader);
             }
-        } catch (Exception | InvalidEmployeeDataException e) {
+        } catch (Exception e) {
             System.err.println("Populating employees list was not successful.");
             System.err.println(e.getMessage());
         }
