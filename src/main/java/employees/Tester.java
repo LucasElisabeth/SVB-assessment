@@ -26,4 +26,9 @@ public class Tester extends Employee {
     public void setAutomationToolName(String automationToolName) {
         this.automationToolName = automationToolName;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", python: " + python + ", Automation tool: " + automationToolName;
+    }
 }

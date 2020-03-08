@@ -21,6 +21,10 @@ public abstract class Employee implements Contractor {
         role = this.getClass().getSimpleName();
     }
 
+    /**
+     * @param reader to process employee data
+     * @throws InvalidEmployeeDataException if the first argument found in the reader is not an integer that can be parsed.
+     */
     public void setEmployeeData(CSVReader reader) throws InvalidEmployeeDataException {
         List<String> stringList = reader.readFile(new File("src/main/resources/employee-data.csv"));
         for (String str : stringList) {

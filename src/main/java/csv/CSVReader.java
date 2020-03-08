@@ -11,6 +11,9 @@ public class CSVReader {
     private String line;
     private String selector;
 
+    /**
+     * @param selector alternative constructor if your csv file is not separated by commas.
+     */
     public CSVReader(String selector) {
         this.selector = selector;
     }
@@ -19,11 +22,20 @@ public class CSVReader {
         selector = ",";
     }
 
+
+    /**
+     * @param header string that will be parsed as header for the file.
+     * @return the string in an array separated by commas.
+     */
     private String[] parseHeader(String header) {
 
         return parseLine(header);
     }
 
+    /**
+     * @param file takes in a file that is processed in the method.
+     * @return a list of Strings, that can then be converted using the parseLine() method.
+     */
     public ArrayList<String> readFile(File file) {
 
         ArrayList<String> strings = new ArrayList<>();
@@ -46,6 +58,10 @@ public class CSVReader {
         return strings;
     }
 
+    /**
+     * @param string takes in a String to be parsed by a selector.
+     * @return the parsed String
+     */
     public String[] parseLine(String string) {
 
         return string.split(selector);

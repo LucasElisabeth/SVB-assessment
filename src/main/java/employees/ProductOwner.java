@@ -15,4 +15,9 @@ public class ProductOwner extends Employee {
     public void setCertified(boolean certified) {
         this.certified = certified;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Certified: " + certified;
+    }
 }

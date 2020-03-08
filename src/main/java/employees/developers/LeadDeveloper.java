@@ -9,6 +9,7 @@ public class LeadDeveloper extends Developer {
         super(employeeId, teamName, name);
         this.yearsOfExperience = yearsOfExperience;
         this.technology = technology;
+        mentor = false;
     }
 
     public int getYearsOfExperience() {
@@ -25,5 +26,10 @@ public class LeadDeveloper extends Developer {
 
     public void setTechnology(String technology) {
         this.technology = technology;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", years of experience: " + yearsOfExperience + ", technology: " + technology;
     }
 }
